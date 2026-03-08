@@ -5,15 +5,18 @@ function App() {
     const [products, setProducts] = useState([]);
     const [orders, setOrders] = useState([]);
 
+    const PRODUCT_SERVICE_URL = process.env.REACT_APP_PRODUCT_SERVICE_URL || 'http://localhost:3001';
+    const ORDER_SERVICE_URL = process.env.REACT_APP_ORDER_SERVICE_URL || 'http://localhost:3002';
+
     useEffect(() => {
         // Fetch products
-        axios.get('http://localhost:3001/products')
+        axios.get(`${PRODUCT_SERVICE_URL}/products`)
             .then(res => setProducts(res.data))
             .catch(err => console.error(err));
     }, []);
 
     const createOrder = (productId) => {
-        axios.post('http://localhost:3002/orders', {
+        axios.post(`${ORDER_SERVICE_URL}/orders`, {
             productId: productId,
             quantity: 1
         })
