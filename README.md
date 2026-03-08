@@ -34,33 +34,4 @@ App will be available at `http://localhost:3000`.
 | `npm run build`   | Build for production     |
 | `npm test`        | Run tests                |
 
-## Environment Variables
 
-| Variable                        | Default                 | Description                  |
-|---------------------------------|-------------------------|------------------------------|
-| `REACT_APP_PRODUCT_SERVICE_URL` | `http://localhost:3001` | Product service base URL     |
-| `REACT_APP_ORDER_SERVICE_URL`   | `http://localhost:3002` | Order service base URL       |
-| `PORT`                          | `3000`                  | Dev server port              |
-
-## Available Scripts
-
-| Script        | Description                        |
-|---------------|------------------------------------|
-| `npm start`   | Start development server           |
-| `npm run build` | Create optimised production build |
-| `npm test`    | Run tests in watch mode            |
-
-## Folder Structure
-
-```
-devops-ecommerce-frontend/
-├── public/
-│   └── index.html          # HTML entry point
-├── src/
-│   ├── App.js              # Main application component
-│   └── index.js            # React DOM entry point
-├── .env.example            # Environment variable template
-├── .gitignore
-├── package.json
-└── README.md
-```
