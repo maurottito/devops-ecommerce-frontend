@@ -5,8 +5,12 @@ function App() {
     const [products, setProducts] = useState([]);
     const [orders, setOrders] = useState([]);
 
-    const PRODUCT_SERVICE_URL = process.env.REACT_APP_PRODUCT_SERVICE_URL || 'http://localhost:3001';
-    const ORDER_SERVICE_URL = process.env.REACT_APP_ORDER_SERVICE_URL || 'http://localhost:3002';
+    // Empty default: in Kubernetes, calls go to /products and /orders (same-origin),
+    // which nginx proxies to the ClusterIP services.
+    // In docker-compose, set REACT_APP_PRODUCT_SERVICE_URL and REACT_APP_ORDER_SERVICE_URL
+    // as build args to override with the full service URLs.
+    const PRODUCT_SERVICE_URL = process.env.REACT_APP_PRODUCT_SERVICE_URL || '';
+    const ORDER_SERVICE_URL = process.env.REACT_APP_ORDER_SERVICE_URL || '';
 
     useEffect(() => {
         // Fetch products
