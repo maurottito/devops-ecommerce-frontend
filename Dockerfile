@@ -9,9 +9,12 @@ RUN npm install
 COPY public/ ./public/
 COPY src/ ./src/
 
-# Build args allow injecting service URLs at build time
-ARG REACT_APP_PRODUCT_SERVICE_URL=http://localhost:3001
-ARG REACT_APP_ORDER_SERVICE_URL=http://localhost:3002
+# Build args allow injecting service URLs at build time.
+# Default to empty string so the React app uses relative URLs (e.g. /products)
+# which nginx proxies to the ClusterIP services — works for Kubernetes out of the box.
+# For docker-compose, pass --build-arg REACT_APP_PRODUCT_SERVICE_URL=http://localhost:3001
+ARG REACT_APP_PRODUCT_SERVICE_URL=""
+ARG REACT_APP_ORDER_SERVICE_URL=""
 
 ENV REACT_APP_PRODUCT_SERVICE_URL=$REACT_APP_PRODUCT_SERVICE_URL \
     REACT_APP_ORDER_SERVICE_URL=$REACT_APP_ORDER_SERVICE_URL
